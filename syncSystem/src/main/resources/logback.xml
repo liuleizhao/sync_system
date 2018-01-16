@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->    
+    <property name="LOG_HOME" value="c:/log/sync" />    
+	<!-- 控制台输出器 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%-16(%d{MM-dd HH:mm:ss.SSS}) [%thread] %-5level %logger{1} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<!-- 按照每天生成错误日志文件 -->
+    <appender name="ERROR_FILE"  class="ch.qos.logback.core.rolling.RollingFileAppender">    
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">  
+            <!--日志文件输出的文件名-->  
+            <FileNamePattern>${LOG_HOME}/syncSystem_error.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <maxFileSize>10MB</maxFileSize>      
+      		<maxHistory>60</maxHistory>  
+      		<totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>     
+        <layout class="ch.qos.logback.classic.PatternLayout">    
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n     
+            </pattern>     
+       </layout>   
+       	<!-- 日志过滤器  -->
+       	<filter class="ch.qos.logback.classic.filter.ThresholdFilter"><!-- 只打印错误日志 --> 
+        	<level>ERROR</level>
+        	<level>INFO</level>
+        	<onMatch>ACCEPT</onMatch>  
+        	<onMismatch>DENY</onMismatch>    
+    	</filter>  
+    </appender>
+ 
+	 <!-- 日志输出级别 -->  
+    <root level="ERROR">     
+        <appender-ref ref="STDOUT" />    
+        <appender-ref ref="ERROR_FILE" /> 
+    </root>   
+     <!-- 日志输出级别 -->  
+    <root level="INFO">     
+        <appender-ref ref="STDOUT" />    
+        <appender-ref ref="ERROR_FILE" /> 
+    </root> 
+    
+    <logger name="myBatisDao" level="TRACE"/>
+    
+</configuration>  

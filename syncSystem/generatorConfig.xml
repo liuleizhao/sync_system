@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="E:\repository\com\oracle\ojdbc14\10.2.0.4.0\ojdbc14-10.2.0.4.0.jar" />
+	<context id="context1">
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" /><!-- 关闭注释 -->
+		</commentGenerator>
+		<jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:ORCL" userId="scott"
+			password="123456" />
+
+		<javaModelGenerator targetPackage="com.cs.sync.entity"
+			targetProject="sync_system/src/main/java" />
+		<sqlMapGenerator targetPackage="mappings"
+			targetProject="sync_system/src/main/resources" />
+		<javaClientGenerator targetPackage="com.cs.sync.dao"
+			targetProject="sync_system/src/main/java" type="XMLMAPPER" />
+
+		<table schema="scott" tableName="SYNC_TASK" domainObjectName="SyncTask"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false"></table>
+
+	</context>
+</generatorConfiguration>
