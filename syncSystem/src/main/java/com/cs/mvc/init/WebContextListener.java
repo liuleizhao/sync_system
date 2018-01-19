@@ -12,7 +12,7 @@ public class WebContextListener extends ContextLoaderListener{
 	public WebApplicationContext initWebApplicationContext(
 			ServletContext servletContext) {
 
-		System.out.println("===========欢迎使用同步系统============");
+		System.out.println("===========欢迎使用诚是同步系统============");
 		return super.initWebApplicationContext(servletContext);
 	}
 

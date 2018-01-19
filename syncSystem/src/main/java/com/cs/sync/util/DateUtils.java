@@ -1,7 +1,7 @@
 /**
  * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
-package com.cs.common.utils;
+package com.cs.sync.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -26,14 +26,12 @@
 	<bean class="com.cs.mvc.util.SpringContextHolder" lazy-init="false"/>
     
 	<!-- 	以下定时任务 -->
- <bean id="syncTaskTimer" class="com.cs.sync.timer.SyncTaskTimer">
-	 </bean>
-	 <task:scheduled-tasks>
-	 
-<task:scheduled ref="syncTaskTimer" method="mot2pmot" cron="0/30 * * * * ? " />
-    	<task:scheduled ref="syncTaskTimer" method="pmot2mot" cron="0/50 * * * * ? " />
-    	    	<!-- <task:scheduled ref="syncTaskTimer" method="mot2pmot" cron="0 4,12,25,32,45,56 * * * ? " />
-    	<task:scheduled ref="syncTaskTimer" method="pmot2mot" cron="0 0,20,40 * * * ? " />  -->
-   	</task:scheduled-tasks>
-   
+ 	<bean id="SyncTimer" class="com.cs.sync.timer.SyncTimer"></bean>
+ 
+		<task:scheduled-tasks>
+			<!-- <task:scheduled ref="SyncTimer" method="mot2pmot" cron="0 0/2 * * * ? " />
+	    	<task:scheduled ref="SyncTimer" method="pmot2mot" cron="0 0/5 * * * ? " /> -->
+	    	<task:scheduled ref="SyncTimer" method="mot2pmot" cron="0 4,12,25,32,45,56 * * * ? " />
+	    	<task:scheduled ref="SyncTimer" method="pmot2mot" cron="0 0,20,40 * * * ? " />
+	   	</task:scheduled-tasks>
 </beans>

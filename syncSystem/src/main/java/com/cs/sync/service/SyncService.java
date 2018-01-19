@@ -1,13 +1,8 @@
 package com.cs.sync.service;
 
-
+import com.cs.sync.vo.SyncVo;
 
 public interface SyncService {
-	
-	
-	public String getFileName(String url) throws Exception;
-	
-	public void download(String url1,String url2) throws Exception;
-	
-	public void upload(String url ,String path) throws Exception;
+
+	public void sync(SyncVo vo1,SyncVo vo2)throws Exception;
 }
